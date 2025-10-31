@@ -326,7 +326,12 @@ const {writeContract : writeContract1 , isSuccess , isPending} =  useWriteContra
 
 
     <>
+      <div className={styles.custom}>
+        <img className={styles.image} src="https://i.imgur.com/buNhbF7.png" />
       <ConnectButton/>
+      
+      </div>
+      
       {/* {console.log(isConnected ? "Connected" : "Not Connected")}
       {address}
        */}
@@ -379,12 +384,12 @@ const {writeContract : writeContract1 , isSuccess , isPending} =  useWriteContra
                   )}
               </div>
               <div>
-                <Image 
+                {/* <Image 
                         className={styles.image}
                         src={img}
                         alt="Crypto Devs NFT"
-                      /> 
-                <img className={styles.image} src="https://i.imgur.com/buNhbF7.png" />
+                      />  */}
+                
                </div>
             
         </div> 

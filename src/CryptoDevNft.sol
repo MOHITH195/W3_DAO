@@ -10,4 +10,5 @@ contract CryptoDevNft is ERC721Enumerable {
     function mintNFT() external {
         _safeMint(msg.sender, this.totalSupply()+1);
     }
+    
 }

@@ -11,7 +11,7 @@ interface ICryptoDevNft {
     
     function mintNFT() external;
 
-    function balenceOf (address owner) external view returns (uint256);
+    function balanceOf (address owner) external view returns (uint256);
     function tokenOfOwnerByIndex(address owner, uint256 index)
         external
         view
@@ -52,7 +52,7 @@ contract CryptoDevsDAO is Ownable  {
         }
 
     modifier nftHolderOnly(){
-        require(cryptodrvnft.balenceOf(msg.sender) > 0 , "You must own a cryptodev nft to vote on proposals");
+        require(cryptodrvnft.balanceOf(msg.sender) > 0 , "You must own a cryptodev nft to vote on proposals");
         _;
     }
 
@@ -74,7 +74,7 @@ contract CryptoDevsDAO is Ownable  {
         Proposal storage proposal = proposals[_proposalid];
         // require(!proposal.voters[msg.sender],"You HAAve already Voted on thid proposal");
 
-        uint256  voterNFTBalance = cryptodrvnft.balenceOf(msg.sender);
+        uint256  voterNFTBalance = cryptodrvnft.balanceOf(msg.sender);
         uint numVotes;
         for(uint i=0; i<voterNFTBalance;i++){
             uint256 tokenid = cryptodrvnft.tokenOfOwnerByIndex(msg.sender, i);
@@ -111,8 +111,7 @@ contract CryptoDevsDAO is Ownable  {
         Proposal storage proposal = proposals[_proposalid];
         if(proposal.yayvotes > proposal.nayvotes){
             uint nftprice = fakenftmarkrtplace.getPrice();
-            require(address(this).balance >=nftprice,"Not enough funds to purchase DAO" );
-            
+            require(address(this).balance >=nftprice,"Not enough funds to purchase DAO" );            
             fakenftmarkrtplace.purchase{value:nftprice}(proposal.nftid);
         }
         proposal.executed=true;

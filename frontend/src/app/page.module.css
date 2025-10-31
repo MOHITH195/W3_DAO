@@ -121,6 +121,15 @@
 .logo {
   position: relative;
 }
+
+.custom{
+  margin: 20px;
+  width: 100dvw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between ;
+  
+}
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
